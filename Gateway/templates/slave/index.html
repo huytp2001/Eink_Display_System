@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block pagetitle %}Slave{% endblock %} {% block slavenav %}active{% endblock %} {% block leftnav %} {% endblock%} {% block main %}
+
+<div class="mt-5 row d-flex justify-content-between mx-0">
+    <div>
+        <a href="scan" class="btn btn-success text-light btn_text">Scan for new slaves</a>
+        <a href="javascript:fetchConnectedSlaves()" id="js-reloader" class="btn btn-primary text-light ml-3 btn_text" >Refresh slave list</a>
+    </div>
+    
+    <div> 
+        <a id="btnEdit" href="javascript:editDataSlave()" class="btn btn-warning text-light btn_text" style="margin-right: 110px;">Edit</a>
+        <a id="btnSave" href="javascript:saveEditDataSlave()" class="btn btn-success text-light ml-2 btn_text" >Display</a>
+        <a id="btnFetch" href="javascript:refetchSlave()" class="btn btn-primary text-light ml-2 btn_text">Refetch Display</a>
+        <a id="btnCancel" href="javascript:cancelEditDataSlave()" class="btn btn-danger text-light ml-2 btn_text" style="margin-right: 110px;">Cancel</a>
+    </div>
+</div>
+ 
+
+<table class="mt-4 table table-striped table-dark table-bordered table-hover" style="width: 90%">
+    <caption class="btn_text" style="caption-side: top;">Connected Slave</caption>
+    <thead>
+        <tr>
+            <th scope="col" class="text-center" style="width:8%">Index</th>
+            <th scope="col" class="text-center" style="width:10%">Mac</th>
+            <th scope="col" class="text-center" style="width:15%">Device Name</th>
+            <th scope="col" class="text-center">Product Name</th>
+            <th scope="col" class="text-center">Product Price</th>
+            <th scope="col" class="text-center">Status</th>
+            <th scope="col" class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="js-slave-table">
+    </tbody>
+</table>
+
+{% endblock %} {% block script %}
+<script>
+    $(() => {
+        hideBtn();
+        fetchConnectedSlaves(); 
+    });
+</script>
+{% endblock %}

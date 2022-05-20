@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block pagetitle %}Slave scan{% endblock %} {% block slavenav %}active{% endblock %} {% block leftnav %} {% endblock%} {% block main %}
+
+<div>
+    <a class="btn btn-link text-light btn-lg" style="padding: 0%;" href="/slave">&#8880 Back</a>
+</div>
+
+<div> 
+    <a class="btn btn-primary btn_text mt-5" href="javascript:slaveScan()" id="js-reloader">Re-scan</a>
+</div>
+
+<div>
+    <table class="mt-4 table table-striped table-dark table-bordered table-hover">
+        <caption class="btn_text" style="caption-side: top;">Available devices</caption>
+        <thread>
+            <tr>
+                <th class="text-center"style="width: 15%;">Mac</th>
+                <th class="text-center">Network Name</th>
+                <th class="text-center"style="width: 15%;">Actions</th>
+            </tr>
+        </thread>
+        <tbody id="js-slave-table"></tbody>
+    </table>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+    $(() => {
+        slaveScan();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block pagetitle %}System{% endblock %} {% block
+  systemnav %}active{% endblock %} {% block main %}
+  
+  <div class="container mt-3 mx-0">
+    <div class="row flex justify-content-between bg-dark p-2">
+      <label class="btn_text p-2 ml-3">Change Password</label>
+      <div>
+        <a class="btn btn-warning btn_text mr-3 mt-1" id="btnEdit1" href="javascript:dropDownPwdModal()">Edit</a >
+        </div>
+    </div>
+    <div id="password-modal" style="display:none" class="row flex bg-dark p-3">
+      <label class="btn_text ml-2 ml-5">Login name</label>
+        <input
+          id="js-login-name"
+          type="text"
+          class="form-control ml-5"
+          style="width:90%"
+          disabled
+          value=""
+          placeholder="Login name"
+        />
+        <label class="btn_text mt-2 ml-5">Old password</label>
+        <input
+          id="js-old-pwd"
+          type="password"
+          style="width:90%"
+          class="form-control ml-5"
+          placeholder="Old Password"
+        />
+        <label class="btn_text mt-2 ml-5">New password</label>
+        <input
+          id="js-new-pwd"
+          type="password"
+          style="width:90%"
+          class="form-control ml-5"
+          placeholder="New password"
+        />
+        <label class="btn_text mt-2 ml-5">Re-type new password</label>
+        <input
+          id="js-re-new-pwd"
+          type="password"
+          style="width:90%"
+          class="form-control ml-5"
+          placeholder="Re-type new password"
+        />
+    
+        <a
+          href="javascript:updateAccount()"
+          id="js-dpn"
+          class="btn btn-primary btn_text mt-3 ml-5 "
+        >
+          Update password
+        </a>
+      </br>
+    </div>
+  </div>
+  
+  {% endblock %}
+  
