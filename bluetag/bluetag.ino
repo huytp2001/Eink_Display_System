@@ -3,6 +3,8 @@
 #include "frame.h"
 #include <EEPROM.h>
 
+#define test 1000000
+
 #include <GxEPD2_BW.h>
 #include <Fonts/FreeSerifBold12pt7b.h>
 
