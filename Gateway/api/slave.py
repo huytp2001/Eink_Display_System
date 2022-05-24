@@ -159,16 +159,9 @@ def display_product():
             if x['mac'] == mac:
                 bleclient = x['client']
                 
-                ble.blewrite(bleclient, '@s')
-                ble.blewrite(bleclient, '# ')  
-                ble.blewrite(bleclient, '! ') 
-                ble.blewrite(bleclient, '@e')
+                ble.blewrite(bleclient, 'wake')
                 
-                ble.blewrite(bleclient, '@s')
-                ble.blewrite(bleclient, f'#{product_name}')  
-                ble.blewrite(bleclient, f'!{product_price}') 
-                ble.blewrite(bleclient, '@e') 
-        # ble.bledisconnect(bleclient) 
+                ble.blewrite(bleclient, f'@s{product_name}|{product_price}@e')  
         
         db= dbconnect()
         current_slave = db.execute(dbquerry.get_slave(mac)).fetchone()
@@ -195,6 +188,7 @@ def display_product_name():
         if type_func == 'test':
             bleclient= ble.bleconnect(mac)      
             
+            ble.blewrite(bleclient, 'wake')
             ble.blewrite(bleclient, f'@s{product_name}|@e')
             ble.bledisconnect(bleclient)
 
@@ -233,6 +227,7 @@ def display_product_price():
 
         if type_func == 'test':
             bleclient= ble.bleconnect(mac)
+            ble.blewrite(bleclient, 'wake')
             ble.blewrite(bleclient, f'@s|{product_price}@e')
             ble.bledisconnect(bleclient)
  
@@ -283,10 +278,8 @@ def display_refresh():
             for x in listble: 
                 if x['mac'] == mac:
                     bleclient = x['client']
-                    ble.blewrite(bleclient, '@s')
-                    ble.blewrite(bleclient, '@dr -')
-                    ble.blewrite(bleclient, '@e')
-            # ble.bledisconnect(bleclient)
+                    ble.blewrite(bleclient, 'wake')
+                    ble.blewrite(bleclient, '@srefresh@e')
         
         return resp.success()
     except:
@@ -309,10 +302,8 @@ def display_refresh_all():
             for x in listble: 
                 if x['mac'] == slave['mac']:
                     bleclient = x['client']
-                    ble.blewrite(bleclient, '@s')
-                    ble.blewrite(bleclient, '@dr -')
-                    ble.blewrite(bleclient, '@e')
-            # ble.bledisconnect(bleclient)
+                    ble.blewrite(bleclient, 'wake')
+                    ble.blewrite(bleclient, '@srefresh@e')
 
         return resp.success()
     except:
