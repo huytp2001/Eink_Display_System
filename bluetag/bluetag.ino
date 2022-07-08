@@ -161,7 +161,7 @@ void loop() {
     }
 
     //ble.Sleep();
-//    delay(3000);
-//    LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
-//    delay(3000);
+    // delay(3000);
+    // LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
+    // delay(3000);
 }
