@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <title>Bluetag - Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='fontawsome/all.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='app.css')}}" />
+    <style>
+        body {
+            position: relative;
+            font-size: .875rem;
+        }
+
+        .container {
+            width: 25em;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            /* background-color: yellow; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <label class="txt-h1 mb-0">Login</label><br />
+        <label class="mb-0 mt-5">Login name</label>
+        <input id="js-login-name" type="text" class="form-control" placeholder="Enter login name" />
+        <label class="mb-0 mt-2">Password</label>
+        <input id="js-login-pwd" type="password" class="form-control" placeholder="Enter password" />
+        <a href="javascript:login()" class="btn btn-primary text-light mt-3" style="width: 5em;">Login</a>
+    </div>
+
+    <script src="{{url_for('static', filename='jquerry/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='fontawsome/all.min.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/core.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/api-client.js')}}"></script>
+    <script>
+        function login() {
+            let loginName = $('#js-login-name').val();
+            let loginPwd = $('#js-login-pwd').val();
+
+            // sha256(loginPwd).then(pwdHash => { });
+
+            loginCall(loginName, loginPwd, {
+                complete: () => { },
+                success: (response) => { 
+                    if (response.code === '0') {
+                        const token = response.data.token 
+                        sessionStorage.setItem('token', token);
+                        sessionStorage.setItem('tokenExpired', response.data.expired);
+                        localStorage.setItem('loginName', loginName);
+                        localStorage.setItem('pwdHash', loginPwd);
+
+                        window.location = '/dashboard';
+                    } else {
+                        alert(response.msg);
+                    }
+                },
+                error: () => {
+                    alert('Login failed, try again later...');
+                }
+            });
+        }
+
+        $(() => {
+            document.addEventListener('keypress', (e) => {
+                if (e.code === "Enter") {
+                    login();
+                }
+            });
+
+            if (localStorage.getItem('loginName') !== null) {
+                loginCall(localStorage.getItem('loginName'), localStorage.getItem('pwdHash'), {
+                    complete: () => { },
+                    success: (response) => {
+                        if (response.code === '0') {
+                            sessionStorage.setItem('token', response.data.token);
+                            sessionStorage.setItem('tokenExpired', response.data.expired);
+
+                            window.location = '/dashboard';
+                        } else {
+                            alert(response.msg);
+                        }
+                    },
+                    error: () => {
+                        alert('Login failed, try again later...');
+                    }
+                });
+            }
+        });
+    </script>
+
+</html>

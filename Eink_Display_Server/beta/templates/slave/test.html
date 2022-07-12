@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block pagetitle %}{{mac}} Test{% endblock %} {% block slavenav %}active{% endblock %} {% block leftnav %} {% endblock%} {% block main %}
+<label class="txt-h1 mb-0">Slave test</label>
+<div class="row mx-0">
+    <label class="txt-h3 text-secondary" id="js-mac">{{mac}}</label>
+</div>
+
+<div class="row mt-5 mx-0">
+    <label class="txt-h2 m-0">Function test</label>
+</div>
+<div class="row mx-0 mt-3">
+    <label>Product name</label>
+    <input id="js-product-name" value="Sample Product" type="text" class="form-control" placeholder="Product Name" />
+    <label class="mt-2">Product price</label>
+    <input id="js-product-price" value="10.000.000 VND" type="text" class="form-control" placeholder="Product price" />
+
+    <a href="javascript:displayProductName()" id="js-dpn" class="btn btn-primary text-light mt-3">Display product Name</a>
+    <a href="javascript:displayProductPrice()" id="js-dpp" class="btn btn-primary text-light mt-3 ml-2">Display product price</a>
+    <a href="javascript:displayRefresh()" id="js-drf" class="btn btn-success text-light mt-3 ml-2">Refresh display</a>
+</div>
+<div class="row mt-4 mx-0">
+    <label class="txt-h2 m-0">Add device</label>
+</div>
+<div class="row mx-0 mt-3">
+    <label>Device name</label>
+    <input id="js-device-name" type="text" class="form-control" placeholder="Enter device name" required/>
+
+    <a href="javascript:addSlave()" id="js-add" class="btn btn-success text-light mt-3">Add this device</a>
+</div>
+{% endblock %}

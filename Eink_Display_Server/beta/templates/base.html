@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Bluetag - {% block pagetitle %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='fontawsome/all.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='app.css')}}" />
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard">Bluetag</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="javascript:logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link {% block dashboardnav %}{% endblock %}" href="/dashboard">
+                                <i class="fa fa-home mr-1" aria-hidden="true"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block slavenav %}{% endblock %}" href="/slave">
+                                <i class="fa fa-microchip mr-1" aria-hidden="true"></i></span> Slave
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block systemnav %}{% endblock %}" href="/system">
+                                <i class="fa fa-cog mr-1" aria-hidden="true"></i> System
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                {% block main %}{% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='jquerry/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='fontawsome/all.min.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/core.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/api-client.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/app.js')}}"></script>
+    {% block script %}{% endblock %}
+
+</html>

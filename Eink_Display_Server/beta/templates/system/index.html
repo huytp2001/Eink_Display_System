@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block pagetitle %}System{% endblock %} {% block
+systemnav %}active{% endblock %} {% block main %}
+<label class="txt-h1">System</label>
+
+<div class="container border mt-3 mx-0 rounded">
+  <div class="row flex justify-content-between p-2">
+    <label class="txt-h2 m-1">Change Password</label>
+    <div>
+      <a class="btn btn-warning text-light" id="btnEdit1" href="javascript:dropDownPwdModal()"
+        >Edit</a >
+    </div>
+  </div>
+  <div id="password-modal" style="display: none" class="row mx-0 mt-2 p-2">
+    <label>Login name</label>
+    <input
+      id="js-login-name"
+      type="text"
+      class="form-control"
+      disabled
+      value=""
+      placeholder="Login name"
+    />
+    <label class="mt-2">Old password</label>
+    <input
+      id="js-old-pwd"
+      type="password"
+      class="form-control"
+      placeholder="Old Password"
+    />
+    <label class="mt-2">New password</label>
+    <input
+      id="js-new-pwd"
+      type="password"
+      class="form-control"
+      placeholder="New password"
+    />
+    <label class="mt-2">Re-type new password</label>
+    <input
+      id="js-re-new-pwd"
+      type="password"
+      class="form-control"
+      placeholder="Re-type new password"
+    />
+
+    <a
+      href="javascript:updateAccount()"
+      id="js-dpn"
+      class="btn btn-primary text-light mt-3"
+    >
+      Update password
+    </a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block pagetitle %}Dashboard{% endblock %} {% block dashboardnav %}active{% endblock %} {% block main %}
+<label class="txt-h1">Dashboard</label>
+
+<div class="row mx-0 mt-5">
+    <label class="txt-h2">Bluetag Master</label>
+</div>
+<div class="row mx-0">
+    <p>Slave tab contains slave actions: scan, list, test, details</p>
+</div>
+{% endblock %} {% block script %}
+<script>
+    $(() => {
+        if (localStorage.getItem('loginName') === null) {
+            window.location = '/auth/login';
+        }
+    });
+</script>
+{% endblock %}

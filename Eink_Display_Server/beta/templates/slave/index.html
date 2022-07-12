@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block pagetitle %}Slave{% endblock %} {% block slavenav %}active{% endblock %} {% block leftnav %} {% endblock%} {% block main %}
+<label class="txt-h1">Slave</label>
+
+<div class="row mt-5">
+    <div class="col">
+        <label class="txt-h2">Actions</label>
+    </div>
+</div>
+<div class="row d-flex justify-content-between mx-0">
+    <div>
+        <a href="scan" class="btn btn-success text-light">Scan for new slaves</a>
+        <a href="javascript:fetchConnectedSlaves()" id="js-reloader" class="btn btn-primary text-light ml-2">Refresh slave list</a>
+    </div>
+    
+    <div> 
+        <a id="btnEdit" href="javascript:editDataSlave()" class="btn btn-warning text-light">Edit</a>
+        <a id="btnSave" href="javascript:saveEditDataSlave()" class="btn btn-success text-light ml-2">Display</a>
+        <a id="btnFetch" href="javascript:refetchSlave()" class="btn btn-primary text-light ml-2">Refetch Display</a>
+        <a id="btnCancel" href="javascript:cancelEditDataSlave()" class="btn btn-danger text-light ml-2">Cancel</a>
+    </div>
+</div>
+
+<div class="row mt-3 mx-0">
+    <label class="txt-h2">Connected slaves</label>
+</div>
+<div class="row mt-3 mx-0">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Mac</th>
+                <th>Device Name</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="js-slave-table">
+        </tbody>
+    </table>
+</div>
+{% endblock %} {% block script %}
+<script>
+    $(() => {
+        hideBtn();
+        fetchConnectedSlaves(); 
+    });
+</script>
+{% endblock %}
