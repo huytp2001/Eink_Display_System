@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block pagetitle %}Dashboard{% endblock %} {% block dashboardnav %}active{% endblock %} {% block main %}
+
+{% endblock %} {% block script %}
+<script>
+    $(() => {
+        if (localStorage.getItem('loginName') === null) {
+            window.location = '/auth/login';
+        }
+    });
+</script>
+{% endblock %}

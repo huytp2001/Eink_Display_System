@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block pagetitle %}{{mac}} Details{% endblock %} {% block slavenav %}active{% endblock %} {% block leftnav %} {% endblock%} {% block main %}
+
+<div>
+    <a class="btn btn-link text-light btn-lg" style="padding: 0%;" href="/slave">&#8880 Back</a>
+</div>
+
+</br>
+</br>
+<div>
+    <label class="btn_text" style="font-size: large;" id="js-mac">{{mac}}</label>
+</div>
+
+<div class="row mx-0 mt-3">
+    <label class="form-label btn_text">Product name</label>
+    <input id="js-product-name" type="text" class="form-control form-control-lg" placeholder="Product Name" />
+    <label class="form-label btn_text mt-2">Product price</label>
+    <input id="js-product-price" type="text" class="form-control form-control-lg" placeholder="Product price" />
+
+    <a href="javascript:displayProductName('notest')" id="js-dpn" class="btn btn-primary btn_text mt-3">Display product Name</a>
+    <a href="javascript:displayProductPrice('notest')" id="js-dpp" class="btn btn-primary btn_text mt-3 ml-3">Display product price</a>
+    <a href="javascript:displayRefresh('notest')" id="js-drf" class="btn btn-success btn_text mt-3 ml-3">Refresh display</a>
+</div>
+
+</br>
+
+<div class="row mx-0 mt-3">
+    <label class="form-label btn_text">Device name</label>
+    <input id="js-device-name" type="text" class="form-control form-control-lg" placeholder="Enter device name" />
+    <a href="javascript:updateSlave()" class="btn btn-success btn_text mt-3">Update slave name</a>
+    <a href="javascript:removeSlave()" class="btn btn-danger btn_text mt-3 ml-3">Remove this slave</a>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+    $(() => {
+        getCurrentSlave();
+    });
+</script>
+{% endblock %}
