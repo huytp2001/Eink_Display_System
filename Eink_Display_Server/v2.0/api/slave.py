@@ -2,18 +2,15 @@ from flask import *
 import threading
 from core.data import responses as resp
 from core.data.database import dbconnect
-from core.bleutils.ble_linux import BLE_Controller
+from core.bleutils import ble_linux as ble
 from core.data.database import *
 from core.data import querry as dbquerry
 import uuid
 import traceback
 from api.auth import authorize
 from app import get_threads, init_threads, remove_threads 
-import time
 
 bp = Blueprint("api/slave", __name__, url_prefix="/api/slave")
-
-ble_control = BLE_Controller()
 
 @bp.route('/all', methods=['GET'])
 @authorize
